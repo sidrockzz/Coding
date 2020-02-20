@@ -1,18 +1,18 @@
 class Solution:
-    def twoSum(self, nums, target):
+    def addTwoNumbers(self, l1, l2 ,c = 0):
         """
-        :type nums: List[int]
-        :type target: int
-        :rtype: List[int]
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
         """
-        seen = {}
+        val = l1.val + l2.val + c
+        c = val // 10
+        ret = ListNode(val % 10 ) 
         
-        for index, num in enumerate(nums):
-            other = target - num
-            
-            if other in seen:
-                return [seen[other], index]
-            else:
-                seen[num] = index
-                
-        return []
+        if (l1.next != None or l2.next != None or c != 0):
+            if l1.next == None:
+                l1.next = ListNode(0)
+            if l2.next == None:
+                l2.next = ListNode(0)
+            ret.next = self.addTwoNumbers(l1.next,l2.next,c)
+        return ret
