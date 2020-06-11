@@ -33,4 +33,4 @@ int main()
     int n = sizeof(arr)/sizeof(arr[0]);
     printMaxActivities(arr, n);
     return 0;
-} 
+}
