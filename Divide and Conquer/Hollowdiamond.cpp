@@ -1,41 +1,37 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
 int main()
 {
-    int i,j,rows;
-    printf("Enter the number of rows: \n");
-    scanf("%d",&rows);//get input from user
-//print upper triangle
-    for(i=1; i<=rows; i++){
-        for(j=rows; j>i; j--){
-            printf(" ");//print space
-        }
-        printf("*");//print star
-        for(j=1; j<(i-1)*2; j++){
+    int n;
+
+    printf("Enter number of rows: ");
+    scanf("%d",&n);
+
+    for(int i=1; i<=n/2; i++)
+    {
+        for(int j=i; j<=n; j++)
+        {
             printf(" ");
         }
-        if(i==1){
-            printf("\n");//move to next line
+        for(int k=1; k<=2*i-1; k++)
+        {
+            if(k==1 || k==(2*i-1)) printf("*");
+            else printf(" ");
         }
-        else{
-            printf("*\n");
-        }
+        printf("\n");
     }
-//print lower triangle
-    for(i=rows-1; i>=1; i--){
-        for(j=rows; j>i; j--){
-            printf(" ");//print space
-        }
-        printf("*");
-        for(j=1; j<(i-1)*2; j++){
+    for(int i=(n-1)/2; i>=1; i--)
+    {
+        for(int j=n; j>=i; j--)
+        {
             printf(" ");
         }
-        if(i==1){
-            printf("\n");//move to next line
+        for(int k=1; k<=2*i-1; k++)
+        {
+            if(k==1 || k==2*i-1) printf("*");
+            else printf(" ");
         }
-        else{
-            printf("*\n");
-        }
+        printf("\n");
     }
+
     return 0;
 }
