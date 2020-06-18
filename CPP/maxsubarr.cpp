@@ -14,14 +14,11 @@ int main(){
     for(int i=0;i<n;i++){
         cin>>array[i];
     }
-    int best = 0;
-    for (int a = 0; a < n; a++) {
-            int sum = 0;
-            for (int b = a; b < n; b++) {
-                sum += array[b];
+    int best = 0,sum = 0;
+    for (int k = 0; k < n; k++) {
+                sum =max(array[k],sum+array[k]);
                 best = max(best,sum);
             }
-        }
     cout << best << "\n";
 }
-//O(n^2) algo
+//O(n) algo
