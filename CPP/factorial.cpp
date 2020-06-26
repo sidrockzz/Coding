@@ -1,35 +1,46 @@
-//
-// Created by siddharth on 18/06/20.
-//
+#include<iostream>
 
-#include<bits/stdc++.h>
-#include <vector>
-#define M 1000000007
-#define F first
-#define S second
-#define PB push_back
-#define MP make_pair
-#define REP(i,a,b) for (int i = a; i <= b; i++)
-#define SQ(a) (a)*(a)
 using namespace std;
-typedef long long ll;
-typedef vector<int>vi;
-typedef pair<int,int>pi;
+//Create max array which can hold big result of factoriaal
+#define MAX 500
+int result[MAX];
+
+//digit count in result array
+int result_size;
+
+void multiply(int x){
+    //In multiplu method multiply this "x" numbr to result[i] and update the result in reverse order
+    int carry = 0;
+    for(int i=0;i<result_size;i++){
+        int prod = result[i] * x+carry;
+        result[i] = prod %10; // To store reverse order
+        carry = prod/10;
+    }
+    while(carry){
+        result[result_size]=carry%10;
+        carry = carry / 10;
+        result_size++;
+    }
+}
+
+
+void factorial(int n){
+    //initialize result[0]=1 and number of digit=1
+    result[0]=1;
+    result_size=1;
+
+    //now multiply digit one by one
+    for(int i =2;i<=n;i++)
+        multiply(i);
+    //print the result arra in reverse order for answer
+    for(int i=result_size-1;i>=0;i--){
+        cout<<result[i];
+    }
+    cout<<endl;
+
+}
 
 int main(){
-    ios::sync_with_stdio(0);
-    cin.tie(0);
-    //freopen("input.txt","x","stdin");
-   // freopen('output.txt',"w","stdout");
-    unsigned long long n,x=1;
-    cin>>n;
-    n = n%M;
-    if(n<0)
-        n+=M;
-    REP(i,1,n)
-        x = (x*i)%M;
-    cout<<x%M<<"\n";
-   /// fclose(stdin);
-    //fclose(stdout);
-    return 0;
+    int n = 100;
+    factorial(n);
 }
