@@ -7,9 +7,9 @@ i=0
 j=len(listSample)-1
 
 while i<j:
-    if not listSample[i].isalpha():
+    if not listSample[i].isalnum():
         i+=1
-    elif not listSample[j].isalpha():
+    elif not listSample[j].isalnum():
         j-=1
     else:
         #swap the element in the list
