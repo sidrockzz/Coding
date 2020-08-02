@@ -8,6 +8,8 @@ def prime(n1, n2):
             l1.append(n)
     return l1
 n1, n2 = map(int, input().split())
+
+
 l1 = prime(n1,n2)
 
 l2 = list()
