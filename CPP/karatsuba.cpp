@@ -16,8 +16,7 @@ int getLength(long long value) {
 long long multiply(long long x, long long y) {
 	int xLength = getLength(x);
 	int yLength = getLength(y);
-	int N = (int)(   
-	max(xLength, yLength));
+	int N = (int)(max(xLength, yLength));
 	if (N < 10)
 		return x * y;
 	N = (N/2) + (N%2);
