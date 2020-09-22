@@ -1,70 +1,57 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include<stdio.h>
+#include<stdlib.h>
 
 struct node{
-  int element;
-  struct node* next;
+    int val;
+    struct  node *next;
+    
 };
-
-int solve(struct node* root, int size){
-  //write your code here
-    struct node* newnode;
-    newnode = root;
-    int sum =0;
-    while(newnode!=NULL || sum!=0){
-        if(newnode!=NULL){
-            sum+= newnode->element;
-            newnode=newnode->next;
-        }
-}
-return sum;
-}
-
-void insert(struct node* root,int ele){
-    struct node* traverse;
-    struct node* newnode;
-    traverse = root;
-    newnode = (struct node*)malloc(sizeof(struct node));
-    newnode->element = ele;
-    newnode->next = NULL;
-    while(traverse->next != NULL){
-        traverse=traverse->next;
+struct node *root1,*root2;
+struct node* insert(struct node *root1,int val){
+    struct node *temp,*p;
+    temp=(struct node *)malloc(sizeof(struct node));
+    temp->val=val;
+    temp->next=NULL;
+    //printf("%p\t",temp);
+   // printf("Inside insert");
+   // printf("%p\t",root1);
+    if(root1==NULL){
+        root1=temp;
+        //printf("%p",root1);
+    }else{
+        temp->next=root1;
+        root1=temp;
     }
-    traverse->next = newnode;
+    return root1;
+}
+int display(struct node *root){
+    struct node *temp;
+    temp=root;
+    int res=0;
+    while(temp!=NULL){
+        res=res*10+temp->val;
+        temp=temp->next;
+    }
+    return res;
 }
 
-struct node* makeLL(int *arr, int size){
-    struct node* root;
-    root = (struct node*)malloc(sizeof(struct node));
-    root->element = arr[0];
-    root->next = NULL;
-    for(int i=1;i<size;i++){
-        insert(root,arr[i]);
-    }
-    return root;
-}
 
 int main(){
- int N;
- int *p1, *p2;
- scanf("%d",&N);
- p1 = (int*)malloc(N*sizeof(int));
- p2 = (int*)malloc(N*sizeof(int));
-
- for(int i=0;i<N;i++){
-     scanf("%d",&p1[i]);
- }  
-
- for(int i=0;i<N;i++){
-     scanf("%d",&p2[i]);
- }  
-
-struct node* root=NULL;
-struct node* root1=NULL;
- root=makeLL(p1,N);
- root1=makeLL(p2,N);
-
- printf("%d\n",solve(root,N)+solve(root1,N));
-
- return 0;
-}
+    int size,val,i;
+    //printf("Enter size of an list\n");
+    scanf("%d",&size);
+    //printf("Enter list elements\n");
+    for(i=0;i<size;i++){
+        scanf("%d",&val);
+        root1=insert(root1,val);
+    }
+  
+   // printf("\nList 2\n");
+    //printf("Enter elements of list2\n");
+        for(i=0;i<size;i++){
+        scanf("%d",&val);
+        root2=insert(root2,val);
+    }
+    printf("%d",(display(root1)+display(root2)));
+    return 0;
+    }
