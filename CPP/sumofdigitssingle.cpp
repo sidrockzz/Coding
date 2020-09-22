@@ -5,15 +5,7 @@ using namespace std;
 int main(){
     long long n;
     cin>>n;
-    long long sum=0;
-    while(n>0 || sum > 9){
-        if(n==0){
-            n=sum;
-            sum=0;
-        }
-        sum+=n%10;
-        n/=10;
-        cout<<n<<" "<<sum<<"\n";
-    }
-    cout<<sum;
+    if(n==0)
+    cout<<0<<"\n";
+    cout<< ((n%9==0)?9:(n%9))<<"\n";
 }
