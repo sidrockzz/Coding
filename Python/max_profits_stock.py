@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 def maxProfit(prices):  
     n = len(prices)
     cost = 0
