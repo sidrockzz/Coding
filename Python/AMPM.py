@@ -9,4 +9,4 @@ if string[-2:] == "PM":
         if time[0] == "12":
             time[0] = "00"
     ntime = ':'.join(time)
-    print(str(ntime[:-2]))
+print(str(ntime[:-2]))
